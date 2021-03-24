@@ -1,7 +1,18 @@
 version: "3.8"
 services: 
+  mysql:
+    build: ./db
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: flask-db
+    volumes:
+    - type: volume
+      source: trio-task-db
+      target: /var/lib/mysql
   flask-app:
-       build: ./flask-app
+    container_name: flask-app
+    build: ./flask-app
+    image: trio-task-flask-app
   nginx:
     image: nginx:latest
     ports:
@@ -12,14 +23,9 @@ services:
     - type: bind
       source: ./nginx/nginx.conf
       target: /etc/nginx/nginx.conf
-  db:
-    build: ./db
-    ports:
-      - target: 3060
-        puclished: 3060
-  volumes:
-    - type: bind
-      source: ./db/CreateTable.sql
-      target: 
+volumes:
+  trio-task-db:
+
+ 
 
 
