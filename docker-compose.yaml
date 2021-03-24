@@ -1,0 +1,25 @@
+version: "3.8"
+services: 
+  flask-app:
+       build: ./flask-app
+  nginx:
+    image: nginx:latest
+    ports:
+    - target: 80
+      published: 80
+      protocol: tcp
+    volumes:
+    - type: bind
+      source: ./nginx/nginx.conf
+      target: /etc/nginx/nginx.conf
+  db:
+    build: ./db
+    ports:
+      - target: 3060
+        puclished: 3060
+  volumes:
+    - type: bind
+      source: ./db/CreateTable.sql
+      target: 
+
+
