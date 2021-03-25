@@ -1,7 +1,9 @@
 version: "3.8"
 services: 
   mysql:
+    container_name: mysql
     build: ./db
+    image: trio-task-db
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: flask-db
