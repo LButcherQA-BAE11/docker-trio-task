@@ -3,7 +3,7 @@ services:
   mysql:
     build: ./db
     environment:
-      MYSQL_ROOT_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: flask-db
     volumes:
     - type: volume
