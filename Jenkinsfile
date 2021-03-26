@@ -4,7 +4,7 @@ pipeline {
     environment {
         MYSQL_ROOT_PASSWORD = credentials("MYSQL_ROOT_PASSWORD")
         DOCKER_PASSWORD = credentials("DOCKER_PASSWORD")
-  }
+    }
     stages {
         stage("Install Dependencies"){
             steps {
